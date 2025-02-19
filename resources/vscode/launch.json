@@ -6,12 +6,13 @@
             "request": "launch",
             "cwd": "${workspaceFolder}/src",
             "envFile": "${workspaceFolder}/.env",
-            "module": "#TODO",
+            "module": "uvicorn",
             "args": [
-                "run",
-                "#TODO/__main__.py",
-            ],
-            
-        },
+                "main:app",
+                "--host=127.0.0.1",
+                "--port=8080",
+                "--reload"
+            ]   
+        }
     ]
 }

@@ -20,7 +20,7 @@ RUN poetry install
 ENV PYTHONPATH "${PYTHONPATH}:/app"
 
 # ? Run app
-TODO: Implement branch-specific Dockerfile
+CMD ["poetry", "run", "uvicorn", "main:app", "--host=0.0.0.0", "--port=80"]
 
 # ? Expose app to internet
 EXPOSE 80
