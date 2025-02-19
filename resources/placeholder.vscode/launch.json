@@ -1,0 +1,17 @@
+{
+    "configurations": [
+        {
+            "name": "Run",
+            "type": "debugpy",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src",
+            "envFile": "${workspaceFolder}/.env",
+            "module": "#TODO",
+            "args": [
+                "run",
+                "#TODO/__main__.py",
+            ],
+            
+        },
+    ]
+}
