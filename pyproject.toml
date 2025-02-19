@@ -1,14 +1,21 @@
 [tool.poetry]
 name = "acme"
 version = "0.1.0"
-description = ""
+description = "Technical Assignment - Adapta"
 authors = ["Ada <github@adapdr.me>"]
 readme = "README.md"
-packages = [{include = "acme", from = "src"}]
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.12"
 
+
+[tool.poetry.group.dev.dependencies]
+black = "^25.1.0"
+isort = "^6.0.0"
+flake8 = "^7.1.2"
+bandit = "^1.8.3"
+pytest = "^8.3.4"
 
 [build-system]
 requires = ["poetry-core"]
