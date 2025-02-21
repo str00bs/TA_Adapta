@@ -18,13 +18,13 @@ class DatabaseConfig(BaseSettings):
         extra="ignore",
     )
 
-    host: str = Field(None)
-    port: int = Field(None)
+    host: str | None = Field(None)
+    port: int | None = Field(None)
     database: str | Path = Field(...)
 
     driver: str = Field(...)
     driver_default: str = Field(...)
-    log_queries: bool = Field(None)
+    log_queries: bool | None = Field(None)
 
     user: str = Field(...)
     password: str = Field(...)
@@ -37,4 +37,4 @@ class DatabaseConfig(BaseSettings):
 
 
 # ? This instantiates the DB connection with the DatabaseConfig
-ConnectionResolver().set_connection_details(DatabaseConfig().to_orm_format())
+DB = ConnectionResolver().set_connection_details(DatabaseConfig().to_orm_format())
