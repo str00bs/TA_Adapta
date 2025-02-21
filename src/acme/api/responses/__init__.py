@@ -6,9 +6,8 @@ Module contains API Responses that are:
 """
 
 from .generic import GenericResponses
+from .messages import MessagesResponses
 from .system import SystemResponses
+from .users import UsersResponses
 
-__all__ = [
-    "GenericResponses",
-    "SystemResponses",
-]
+__all__ = ["GenericResponses", "MessagesResponses", "SystemResponses", "UsersResponses"]

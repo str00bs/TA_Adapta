@@ -4,9 +4,16 @@ Module contains API Schema that are:
 - Used by responses to generate openapi.json, SwaggerUI and ReDoc
 """
 
-from .generic import MessageSchema, MetaSchema
+from .generic import MetaSchema, ResponseSchema
+from .messages import MessagesList, MessagesSchema
+from .users import UsersList, UsersSchema, UsersType
 
 __all__ = [
-    "MessageSchema",
     "MetaSchema",
+    "ResponseSchema",
+    "MessagesList",
+    "MessagesSchema",
+    "UsersList",
+    "UsersSchema",
+    "UsersType",
 ]

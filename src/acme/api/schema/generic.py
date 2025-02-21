@@ -5,10 +5,10 @@ from typing import Optional
 from pydantic import BaseModel, Field
 
 
-class MessageSchema(BaseModel):
-    """Generic message model"""
+class ResponseSchema(BaseModel):
+    """Generic response model"""
 
-    msg: str
+    detail: str
 
 
 class MetaSchema(BaseModel):
