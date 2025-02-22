@@ -19,6 +19,7 @@ class UsersService:
             secrets = data.get_secrets()
             data = data.model_dump()
             data.update(secrets)
+
             user = UsersModel.create(data).fresh()
         except QueryException as ex:
             status_code: int
@@ -29,7 +30,7 @@ class UsersService:
 
             raise HTTPException(
                 status_code=status_code,
-                detail=str(ex.args).split("DETAIL")[1],
+                detail=str(ex.args),
             )
 
         return UsersSchema(**user.serialize())
@@ -59,7 +60,7 @@ class UsersService:
         if not user:
             raise HTTPException(status.HTTP_404_NOT_FOUND)
         else:
-            user.update(data.model_dump(exclude_defaults=True, exclude=["uuid"]))
+            user.update(data)
 
         return UsersSchema(**user.serialize())
 

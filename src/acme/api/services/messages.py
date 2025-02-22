@@ -25,7 +25,7 @@ class MessagesService:
 
             raise HTTPException(
                 status_code=status_code,
-                detail=str(ex.args).split("DETAIL")[1],
+                detail=str(ex.args).split("DETAIL")[0],
             )
 
         return MessagesSchema(**message.serialize())
@@ -50,14 +50,14 @@ class MessagesService:
 
         return MessagesList(**message.serialize())
 
-    def update(self, uuid: str, data: MessagesSchema) -> MessagesSchema:
+    def update(self, uuid: str, data: dict) -> MessagesSchema:
         """Updates a `MessagesSchema` Entity by uuid with data"""
         message = MessagesModel.find(uuid)
 
         if not message:
             raise HTTPException(status.HTTP_404_NOT_FOUND)
         else:
-            message.update(data.model_dump(exclude_defaults=True, exclude=["uuid"]))
+            message.update(data)
 
         return MessagesSchema(**message.serialize())
 
