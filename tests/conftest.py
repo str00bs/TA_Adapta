@@ -9,7 +9,7 @@ from fastapi.testclient import TestClient
 @pytest.fixture
 def client():
     """Provides an ASGI TestClient"""
-    from src.acme.main import app
+    from src.main import app
 
     # ? Arrange ...
     yield TestClient(app)
