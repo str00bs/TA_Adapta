@@ -1,6 +1,6 @@
 services:
-  adapta-database:
-    image: postgress:17.3
+  database:
+    image: postgres:17.3
     container_name: service-adapta-database
     restart: unless-stopped
     environment:
@@ -9,19 +9,19 @@ services:
       - POSTGRES_PASSWORD=${DB_PASSWORD}
     ports:
       - "5432:5432"
+    networks:
+      - adapta-net
 
-  adapta-app:
+  app:
     build: .
     container_name: service-adapta-app
     restart: unless-stopped
     depends_on:
-      - adapta-database
+      - database
     networks:
       - adapta-net
     ports: 
       - "80:80"
-    env_file:
-      - dist.env
 
 networks:
   adapta-net:

@@ -1,6 +1,6 @@
 services:
-  adapta-database:
-    image: postgress:17.3
+  database:
+    image: postgres:17.3
     container_name: service-adapta-database
     restart: unless-stopped
     environment:
@@ -11,13 +11,15 @@ services:
       - "5432:5432"
     labels:
       - traefik.enable=false
+    networks:
+      - adapta-net
 
-  adapta-app:
+  app:
     image: str00bs/adapta:${BRANCH_NAME}
     container_name: service-adapta-app
     restart: unless-stopped
     depends_on:
-      - adapta-database
+      - database
     networks:
       - adapta-net
       - proxy
