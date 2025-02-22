@@ -16,8 +16,8 @@ class MessagesTableSeeder(Seeder):
         # ? Required because postgres likes to be 'unique'.
         psycopg2.extras.register_uuid()
 
-        staff_ids = UsersModel.where("type_", UsersType.staff).get().pluck("uuid")
-        employee_ids = UsersModel.where("type_", UsersType.employee).get().pluck("uuid")
+        staff_ids = UsersModel.where("type", UsersType.staff).get().pluck("uuid")
+        employee_ids = UsersModel.where("type", UsersType.employee).get().pluck("uuid")
 
         for _ in range(0, 20):
             fake = Faker()

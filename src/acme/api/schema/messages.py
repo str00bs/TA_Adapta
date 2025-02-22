@@ -30,6 +30,7 @@ class MessagesSchema(BaseModel):
     from_id: UUID = Field(
         description="Sender ID",
         default_factory=uuid4,
+        examples=["39a5dd0e-bc8d-4000-8561-ba78d1fd1456"],  # ? Adapta Admin
     )
     to_id: UUID = Field(
         description="Recipient ID",
@@ -44,7 +45,7 @@ class MessagesSchema(BaseModel):
         None, description="When the message was last updated"
     )
     deleted_at: datetime | None = Field(
-        None, description="When the message was deleted"
+        None, description="When the message was deleted", exclude=True
     )
 
 

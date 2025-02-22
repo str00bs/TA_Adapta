@@ -10,7 +10,7 @@ class CreateUsersTable(Migration):
         """
         with self.schema.create("users") as table:
             table.uuid("uuid").primary()
-            table.enum("type_", ["employee", "staff"])
+            table.enum("type", ["employee", "staff"])
             table.text("name")
             table.text("password", nullable=True)
             table.text("salt", nullable=True)
