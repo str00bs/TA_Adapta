@@ -1,9 +1,10 @@
 """File contains a `Users` ORM model, representing the `users` table"""
 
-from databases.observers.users import UsersObserver
 from masoniteorm.models import Model
 from masoniteorm.relationships import has_many
 from masoniteorm.scopes import SoftDeletesMixin, UUIDPrimaryKeyMixin
+
+from databases.observers.users import UsersObserver
 
 
 class UsersModel(Model, UUIDPrimaryKeyMixin, SoftDeletesMixin):
@@ -20,7 +21,7 @@ class UsersModel(Model, UUIDPrimaryKeyMixin, SoftDeletesMixin):
     __guarded__ = ["created_at", "updated_at", "deleted_at"]
     # __hidden__ = []  # ? Hides field from serialization as default
 
-    @has_many("uuid", "user_id")
+    @has_many("uuid", "from_id")
     def messages(self):
         from databases.models.messages import MessagesModel
 

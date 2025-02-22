@@ -1,9 +1,9 @@
-FROM python:3.13-slim
+FROM python:3.12-slim
 
 # ? Setup application directory
 COPY src/ /app
 COPY dist.env /app/.env
-COPY pyproject.toml poetry.lock LICENSE.md README.md /app/
+COPY entrypoint.sh pyproject.toml poetry.lock LICENSE.md README.md /app/
 
 # ? Set cwd to app
 WORKDIR /app
@@ -17,10 +17,11 @@ RUN pipx install poetry
 RUN poetry install
 
 # ? Setting up global app variables
+ENV DB_CONFIG_PATH "config/databases.py"
 ENV PYTHONPATH "${PYTHONPATH}:/app"
 
 # ? Run app
-CMD ["poetry", "run", "uvicorn", "main:app", "--host=0.0.0.0", "--port=80"]
+ENTRYPOINT [ "sh", "entrypoint.sh" ]
 
 # ? Expose app to internet
 EXPOSE 80
