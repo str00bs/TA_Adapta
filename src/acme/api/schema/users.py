@@ -3,6 +3,7 @@
 from datetime import datetime
 from enum import Enum
 from secrets import token_urlsafe
+from typing import Optional
 from uuid import UUID, uuid4
 
 from api.schema.generic import MetaSchema
@@ -23,24 +24,22 @@ class UsersSchema(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
     # ? Public fields
-    uuid: UUID = Field(
-        description="Unique IDentifier", default_factory=uuid4, alias="uuid"
-    )
-    type_: UsersType = Field(
-        ...,
+    uuid: UUID = Field(description="Unique IDentifier", default_factory=uuid4)
+    type: UsersType | None = Field(
+        UsersType.employee,
         description="Users type",
-        alias="type",
-        examples=[UsersType.employee, UsersType.staff],
     )
 
-    name: str = Field(..., description="Users first name", examples=[fake.name()])
+    name: str = Field(fake.name(), description="Users name")
 
     # ? Secret fields
     password: SecretStr | str | None = Field(
-        description="Users password", examples=[token_urlsafe(16)]
+        token_urlsafe(16), description="Users password", exclude=True
     )
     salt: SecretStr | str | None = Field(
-        description="Salt for password", examples=[token_urlsafe(128)]
+        token_urlsafe(128),
+        description="Salt for password",
+        exclude=True,
     )
 
     # ? Excluded fields
@@ -48,7 +47,9 @@ class UsersSchema(BaseModel):
     updated_at: datetime | None = Field(
         None, description="When the user was last updated"
     )
-    deleted_at: datetime | None = Field(None, description="When the user was deleted")
+    deleted_at: datetime | None = Field(
+        None, description="When the user was deleted", exclude=True
+    )
 
     def get_secrets(self):
         """Return a copy of the model with secrets"""
