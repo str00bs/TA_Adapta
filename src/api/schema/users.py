@@ -3,12 +3,12 @@
 from datetime import datetime
 from enum import Enum
 from secrets import token_urlsafe
-from typing import Optional
 from uuid import UUID, uuid4
 
-from api.schema.generic import MetaSchema
 from faker import Faker
 from pydantic import BaseModel, ConfigDict, Field, SecretStr
+
+from api.schema.generic import MetaSchema
 
 fake = Faker()
 
