@@ -5,8 +5,8 @@ be converted into a minified format, intended for usage in a service/micro-servi
 
 ## ❗ Notes
 There are a few important things to note;
-1. Schemas & Responses would in a 'real' micro-service be supplied via a package through an internal nexus install
-   - Example: : `adapta-api-schemas` and `adapta-api-responses`
+1. ORM Models(++), API Schemas & Responses should supplied via packages through by an internal repository
+   - Example: : `adapta-db`, `adapta-api-schemas` and `adapta-api-responses`
 2. Config can also *optionally* be made universal and supplied via a package as well
 3. Seeding & migrations should normally never be done per service, but in one unified location
    - *But they have been added here, as it makes sense **specifically** for the assignment*
