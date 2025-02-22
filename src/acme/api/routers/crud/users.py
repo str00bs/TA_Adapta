@@ -6,7 +6,16 @@ from api.auth import Auth
 from api.responses import UsersResponses
 from api.schema import UsersList, UsersSchema
 from api.services import UsersService
-from fastapi import APIRouter, BackgroundTasks, Depends, Path, Query, Security, status
+from fastapi import (
+    APIRouter,
+    BackgroundTasks,
+    Body,
+    Depends,
+    Path,
+    Query,
+    Security,
+    status,
+)
 from fastapi.responses import Response
 
 # ? Router Configuration
@@ -44,6 +53,22 @@ async def create_user(
 
 
 @router.get(
+    path="/deleted",
+    operation_id="api.users.deleted",
+    responses=UsersResponses.listed,
+)
+async def retrieve_deleted_users(
+    page_nr: int = Query(1, description="Page number to retrieve", ge=1),
+    limit: int = Query(10, description="Number of items to retrieve", ge=1),
+    service=Depends(UsersService),
+) -> UsersList:
+    """Endpoint is used to retrieve a list of `Users` entities"""
+    result = service.deleted(limit=limit, page_nr=page_nr)
+
+    return result
+
+
+@router.get(
     path="/{uuid}",
     operation_id="api.users.retrieve",
     responses=UsersResponses.retrieve,
@@ -58,7 +83,11 @@ async def retrieve_user(
     return result
 
 
-@router.get(path="/", operation_id="api.users.listed", responses=UsersResponses.listed)
+@router.get(
+    path="/",
+    operation_id="api.users.listed",
+    responses=UsersResponses.listed,
+)
 async def retrieve_users_list(
     page_nr: int = Query(1, description="Page number to retrieve", ge=1),
     limit: int = Query(10, description="Number of items to retrieve", ge=1),
@@ -66,22 +95,6 @@ async def retrieve_users_list(
 ) -> UsersList:
     """Endpoint is used to retrieve a list of `Users` entities"""
     result = service.listed(limit=limit, page_nr=page_nr)
-
-    return result
-
-
-@router.get(
-    path="/deleted",
-    operation_id="api.users.deleted",
-    responses=UsersResponses.listed,
-)
-async def retrieve_deleted_users(
-    page_nr: int = Query(1, description="Page number to retrieve", ge=1),
-    limit: int = Query(10, description="Number of items to retrieve", ge=1),
-    service=Depends(UsersService),
-) -> UsersList:
-    """Endpoint is used to retrieve a list of `Users` entities"""
-    result = service.deleted(limit=limit, page_nr=page_nr)
 
     return result
 
@@ -110,7 +123,7 @@ async def replace_user(
     responses=UsersResponses.update,
 )
 async def update_user(
-    users: UsersSchema,
+    users: dict = Body(..., description="Key,value pairs to be updated"),
     uuid: str = Path(
         ..., description="Unique Identifier for the Users Entity to update"
     ),

@@ -6,7 +6,16 @@ from api.auth import Auth
 from api.responses import MessagesResponses
 from api.schema import MessagesList, MessagesSchema
 from api.services import MessagesService
-from fastapi import APIRouter, BackgroundTasks, Depends, Path, Query, Security, status
+from fastapi import (
+    APIRouter,
+    BackgroundTasks,
+    Body,
+    Depends,
+    Path,
+    Query,
+    Security,
+    status,
+)
 from fastapi.responses import Response
 
 # ? Router Configuration
@@ -44,6 +53,22 @@ async def create_message(
 
 
 @router.get(
+    path="/deleted",
+    operation_id="api.messages.deleted",
+    responses=MessagesResponses.listed,
+)
+async def retrieve_deleted_messages(
+    page_nr: int = Query(1, description="Page number to retrieve", ge=1),
+    limit: int = Query(10, description="Number of items to retrieve", ge=1),
+    service=Depends(MessagesService),
+) -> MessagesList:
+    """Endpoint is used to retrieve a list of `Messages` entities"""
+    result = service.deleted(limit=limit, page_nr=page_nr)
+
+    return result
+
+
+@router.get(
     path="/{uuid}",
     operation_id="api.messages.retrieve",
     responses=MessagesResponses.retrieve,
@@ -74,22 +99,6 @@ async def retrieve_messages_list(
     return result
 
 
-@router.get(
-    path="/deleted",
-    operation_id="api.messages.deleted",
-    responses=MessagesResponses.listed,
-)
-async def retrieve_deleted_messages(
-    page_nr: int = Query(1, description="Page number to retrieve", ge=1),
-    limit: int = Query(10, description="Number of items to retrieve", ge=1),
-    service=Depends(MessagesService),
-) -> MessagesList:
-    """Endpoint is used to retrieve a list of `Messages` entities"""
-    result = service.deleted(limit=limit, page_nr=page_nr)
-
-    return result
-
-
 @router.put(
     path="/{uuid}",
     operation_id="api.messages.replace",
@@ -114,7 +123,7 @@ async def replace_message(
     responses=MessagesResponses.update,
 )
 async def update_message(
-    messages: MessagesSchema,
+    messages: dict = Body(..., description="Key,value pairs to be updated"),
     uuid: str = Path(
         ..., description="Unique Identifier for the Messages Entity to update"
     ),
