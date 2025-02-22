@@ -4,6 +4,8 @@ Main Application file
 - Collects routers and mounts/includes them to the API
 """
 
+from pathlib import Path
+
 import psycopg2.extras
 from api.routers import routers
 from config import Config
@@ -17,7 +19,11 @@ psycopg2.extras.register_uuid()
 app = FastAPI(**Config.API.model_dump())
 
 # ? Mount & serve the frontend
-app.mount("/frontend", StaticFiles(directory="frontend"), name="frontend")
+app.mount(
+    path="/frontend",
+    app=StaticFiles(directory=Path(__file__).parent.joinpath("frontend")),
+    name="frontend",
+)
 
 # ? Add the routers
 for router in routers:

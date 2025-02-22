@@ -1,11 +1,15 @@
 """File contains router for `/api/system` endpoint(s)"""
 
+from pathlib import Path
+
 from api.responses import SystemResponses
 from fastapi import APIRouter, Request, Response
 from fastapi.templating import Jinja2Templates
 
 # ? Router setup
-templates = Jinja2Templates(directory="frontend/templates")
+# Path.cwd().joinpath("src/acme").joinpath("frontend/templates")
+root_dir = Path(__file__).parent.parent.parent
+templates = Jinja2Templates(directory=root_dir.joinpath("frontend/templates"))
 router = APIRouter(
     tags=["System"],
 )
