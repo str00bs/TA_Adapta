@@ -31,7 +31,10 @@ class UsersTableSeeder(Seeder):
             password=hasher.hexdigest(),
             salt=salt,
         )
-        UsersModel.create(user.model_dump())
+        secrets = user.get_secrets()
+        admin = user.model_dump()
+        admin.update(secrets)
+        UsersModel.create(admin)
 
         # ? Create Staff
         staff = []
