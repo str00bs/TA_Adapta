@@ -1,3 +1,6 @@
+"""File contains API routers and endpoint controllers"""
+
+import pathlib
 import secrets
 from uuid import UUID
 
@@ -48,7 +51,9 @@ def auth(credentials: HTTPBasicCredentials = Depends(HTTPBasic())):
     return credentials.username
 
 
-templates = Jinja2Templates(directory="frontend")
+templates = Jinja2Templates(
+    directory=pathlib.Path(__file__).parent.joinpath("frontend")
+)
 
 
 # ? Router Configuration

@@ -1,4 +1,4 @@
-"""File contains a `Messages` ORM model, representing the `messages` table"""
+"""File contains database ORM models, with one for each table"""
 
 from masoniteorm.models import Model
 from masoniteorm.relationships import has_many

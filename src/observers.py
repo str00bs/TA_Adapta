@@ -1,3 +1,5 @@
+"""File contains database observers that react upon database events"""
+
 import hashlib
 
 from masoniteorm.models import Model

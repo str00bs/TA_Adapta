@@ -1,25 +1,18 @@
-# 🚀 Technical Assignment - Adapta
-This repository contains two separate solutions for a technical assignment, with additional resources for convinience.
+# 🚀 Technical Assignment - Adapta - Micro-fastapi
+This branch is a minified version of [feat/fastapi](https://github.com/str00bs/TA_Adapta/tree/feat/fastapi)
+It is made to showcase how a framework designe with micro-services in mind, can easily and quickly
+be converted into a minified format, intended for usage in a service/micro-service ecosystem.
 
+## ❗ Notes
+There are a few important things to note;
+1. Schemas & Responses would in a 'real' micro-service be supplied via a package through an internal nexus install
+   - Example: : `adapta-api-schemas` and `adapta-api-responses`
+2. Config can also *optionally* be made universal and supplied via a package as well
+3. Seeding & migrations should normally never be done per service, but in one unified location
+   - *But they have been added here, as it makes sense **specifically** for the assignment*
+4. Full docs should be supplied per service, but have been omitted due to time-constraints
+5. A CMS should be centrally managed and have access to **all** micro-services.
+   - It has therefore been omitted, but messages can be viewed by calling `/api/messages` ...
+6. CI files (drone and deepsource) have been included as examples, but are not activated.
 
-## 📋 Preface
-The two solutions mentioned are as follows:
-1. Expected solution: solving the assignment using the requested technologies (namely, *Django*)
-   - See branch: [feat/django](https://github.com/str00bs/TA_Adapta/tree/feat/django)
-2. Proposed solution: solving the assignment using alternative technologies
-   - See branch: [feat/fastapi](https://github.com/str00bs/TA_Adapta/tree/feat/fastapi)
-
-## ⚙️ Setup
-TODO: Write once determined
-### Local
-TODO: Write once determined
-### Docker
-TODO: Write once determined
-### Production
-TODO: Write once determined
-
-## 🧑‍🔬 Testing
-TODO: Write once determined
-
-## 🧰 Resources
-TODO: Write once determined
+If you have any questions in regards to this, or other technical decisions made for the test, please ask!

@@ -1,7 +1,7 @@
 {
     "configurations": [
         {
-            "name": "Run",
+            "name": "Run App",
             "type": "debugpy",
             "request": "launch",
             "cwd": "${workspaceFolder}/src",
@@ -12,6 +12,18 @@
                 "--host=127.0.0.1",
                 "--port=8080",
                 "--reload"
+            ]   
+        },
+        {
+            "name": "Run Tests",
+            "type": "debugpy",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/",
+            "envFile": "${workspaceFolder}/.env",
+            "module": "pytest",
+            "args": [
+                "tests/",
+                "-vvv"
             ]   
         }
     ]
