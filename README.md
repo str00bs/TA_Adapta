@@ -11,7 +11,7 @@ There are a few important things to note;
 3. Seeding & migrations should normally never be done per service, but in one unified location
    - *But they have been added here, as it makes sense **specifically** for the assignment*
 4. Full docs should be supplied per service, but have been omitted due to time-constraints
-5. A CMS should be centrally managed and have access to **all** micro-services.
+5. A CMS should be centrally managed and have access to a database-cluster used by **all** micro-services.
    - It has therefore been omitted, but messages can be viewed by calling `/api/messages` ...
 6. CI files (drone and deepsource) have been included as examples, but are not activated.
 
