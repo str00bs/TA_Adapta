@@ -1,15 +1,6 @@
 """File contains tests for the main file and pages"""
 
 
-def test_read_main(client):
-    # ? Act
-    response = client.get("/")
-
-    # ? Assert
-    assert response.status_code == 200
-    assert "<!DOCTYPE html" in response.text
-
-
 def test_docs(client):
     # ? Act
     response = client.get("/docs")

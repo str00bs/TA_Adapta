@@ -4,10 +4,11 @@ from random import choice
 from uuid import uuid4
 
 import psycopg2.extras
-from api.schema import MessagesSchema, UsersType
-from databases.models import MessagesModel, UsersModel
 from faker import Faker
 from masoniteorm.seeds import Seeder
+
+from models import MessagesModel, UsersModel
+from schema import MessagesSchema, UsersType
 
 
 class MessagesTableSeeder(Seeder):

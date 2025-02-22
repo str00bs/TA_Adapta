@@ -6,10 +6,11 @@ from secrets import token_urlsafe
 from uuid import uuid4
 
 import psycopg2.extras
-from api.schema import UsersSchema, UsersType
-from databases.models import UsersModel
 from faker import Faker
 from masoniteorm.seeds import Seeder
+
+from models import UsersModel
+from schema import UsersSchema, UsersType
 
 
 class UsersTableSeeder(Seeder):
