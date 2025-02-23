@@ -3,8 +3,8 @@ This repository contains three separate solutions for a technical assignment, di
 
 
 ## 👋 Welcome!
-I have intentionally "overdone" this assignment with the intent & purpose showing how a more modern framework ([FastAPI](https://fastapi.tiangolo.com/))
-can be better fit for the purpose (i.e. services/micro-services) than Django, which may be better suited monolithic applications. 
+I have intentionally "overdone" this assignment with explicit intent & purpose of showing how a more modern web-framework ([FastAPI](https://fastapi.tiangolo.com/))
+can be better fit for the intended purpose (i.e. services/micro-services) than Django, which may be better suited for monolithic applications. 
 It should also be mentioned, that it has *significantly* more throughput (higher [RPS](https://www.toucantoco.com/en/glossary/requests-per-second)), and faster response times.
 
 ❗ Please note, each solution has it's own `README.md` file with information specific to that branch and solution. 
