@@ -1,0 +1,44 @@
+services:
+  database:
+    image: postgres:17.3
+    container_name: service-adapta-database-1
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=${DB_DATABASE}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    ports:
+      - "5432:5432"
+    networks:
+      - adapta-net-1
+
+  app-1:
+    build:
+      context: .
+      dockerfile: app_1.Dockerfile
+    container_name: service-adapta-django-1
+    restart: unless-stopped
+    depends_on:
+      - database
+    networks:
+      - adapta-net-1
+    ports: 
+      - "8080:8000"
+
+  app-2:
+    build:
+      context: .
+      dockerfile: app_2.Dockerfile
+    container_name: service-adapta-django-2
+    restart: unless-stopped
+    depends_on:
+      - database
+    networks:
+      - adapta-net-1
+    ports: 
+      - "8081:8000"
+
+networks:
+  adapta-net-1:
+    name: adapta-net-1
+    external: false

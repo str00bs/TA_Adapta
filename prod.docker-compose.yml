@@ -1,0 +1,62 @@
+services:
+  database:
+    image: postgres:17.3
+    container_name: service-adapta-database-1
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=${DB_DATABASE}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    networks:
+      - adapta-net-1
+    labels:
+      - traefik.enable=false
+
+  app-1:
+    build:
+      context: .
+      dockerfile: app_1.Dockerfile
+    container_name: service-adapta-django-1
+    restart: unless-stopped
+    depends_on:
+      - database
+    networks:
+      - adapta-net-1
+      - proxy
+    labels:
+      - traefik.enable=true
+      # Routers
+      - traefik.http.routers.adapta-django-1.tls=true
+      - traefik.http.routers.adapta-django-1.tls.certresolver=letsencrypt
+      - traefik.http.routers.adapta-django-1.entrypoints=https
+      - traefik.http.routers.adapta-django-1.rule=Host(`${DOMAIN_1}`)
+      # Services
+      - traefik.http.services.adapta-django-1.loadbalancer.server.port=8000
+
+  app-2:
+    build:
+      context: .
+      dockerfile: app_2.Dockerfile
+    container_name: service-adapta-django-2
+    restart: unless-stopped
+    depends_on:
+      - database
+    networks:
+      - adapta-net-1
+      - proxy
+    labels:
+      - traefik.enable=true
+      # Routers
+      - traefik.http.routers.adapta-django-2.tls=true
+      - traefik.http.routers.adapta-django-2.tls.certresolver=letsencrypt
+      - traefik.http.routers.adapta-django-2.entrypoints=https
+      - traefik.http.routers.adapta-django-2.rule=Host(`${DOMAIN_2}`)
+      # Services
+      - traefik.http.services.adapta-django-2.loadbalancer.server.port=8000
+
+networks:
+  adapta-net-1:
+    name: adapta-net-1
+    external: false
+  proxy:
+    external: true
