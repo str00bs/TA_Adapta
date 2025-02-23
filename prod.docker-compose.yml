@@ -15,7 +15,7 @@ services:
       - adapta-net
 
   app:
-    image: str00bs/adapta:${BRANCH_NAME}
+    image: str00bs/adapta-${BRANCH_NAME}:latest
     container_name: service-adapta-app
     restart: unless-stopped
     depends_on:
