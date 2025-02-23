@@ -58,7 +58,7 @@ class UsersObserver:
         Args:
             user (masoniteorm.models.Model): Users model.
         """
-        # ? Hashing should 'ideally' be re-done here, but is omitted for time
+        # ? TODO: Hashing should 'ideally' be re-done here, but is omitted for time
         pass
 
     def updated(self, user: Model):
@@ -122,4 +122,7 @@ class UsersObserver:
         Args:
             user (masoniteorm.models.Model): Users model.
         """
-        # TODO: Goodbye message
+        message = MessagesSchema(
+            title=f"Goodbye {user.name}", content="Sad to see you go..."
+        )  # type:ignore
+        user.messages.create(message.model_dump())
