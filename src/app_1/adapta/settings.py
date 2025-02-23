@@ -84,11 +84,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': getenv('DB_DATABASE', 'adapta-db'),
-        'USER': getenv('DB_USER', 'postgres'),
-        'PASSWORD': getenv('DB_PASSWORD'),
-        'HOST': getenv('DB_HOST', 'localhost'),
+        'USER': getenv('DB_USER', 'adapta'),
+        'PASSWORD': getenv('DB_PASSWORD', 'adapta'),
+        'HOST': getenv('DB_HOST', 'database'),
         'PORT': getenv('DB_PORT', 5432),
-
     }
 }
 
