@@ -7,8 +7,10 @@ I have intentionally "overdone" this assignment with explicit intent & purpose o
 can be better fit for the intended purpose (i.e. services/micro-services) than Django, which may be better suited for monolithic applications. 
 It should also be mentioned, that it has *significantly* more throughput (higher [RPS](https://www.toucantoco.com/en/glossary/requests-per-second)), and faster response times.
 
-❗ Please note, each solution has it's own `README.md` file with information specific to that branch and solution. 
-
+❗ Please note;
+- Each solution has it's own `README.md` file with information specific to that branch and solution. 
+- Each feature would normally have all commits squashed before merging to `develop` -> `main`.
+   - *...but have been kept to show history as requested by the assignment.*
 
 ## 📋 Solutions
 1. Requested implementation: solving the assignment using the requested technologies (Django)
