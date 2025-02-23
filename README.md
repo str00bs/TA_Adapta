@@ -1,24 +1,44 @@
 # 🚀 Technical Assignment - Adapta - Django
 This branch provides a Django implementation as required.
 
-## 📋 Preface
-The two solutions mentioned are as follows:
-1. Expected solution: solving the assignment using the requested technologies (namely, *Django*)
-   - See branch: [feat/django](https://github.com/str00bs/TA_Adapta/tree/feat/django)
-2. Proposed solution: solving the assignment using alternative technologies
-   - See branch: [feat/fastapi](https://github.com/str00bs/TA_Adapta/tree/feat/fastapi)
+## ❗ Notes
+1. This is not an I can recommend, from my perspective Django should only be used for monolithic applications.
+2. The assignment requires the 'apps' to be runable/buildable separately, meaning they need separate django 'projects',
+   effectively making this a pseudo-mono-repo
+   - [App 1](src/app_1) - Users
+   - [App 2](src/app_2) - Messages
+3. Not included:
+   - Testing has been omitted for this implementation, but is already showed on the two other solutions.
+   - Resources has been omitted for this implementation, but is already showed on the two other solutions.
 
-## ⚙️ Setup
-TODO: Write once determined
+
+## ⚙️ Setup & Run
+❗ This repository uses [poetry](https://python-poetry.org/)
+
 ### Local
-TODO: Write once determined
-### Docker
-TODO: Write once determined
+First setup the developer environment
+1. Copy ENV file `cp dist.env src/app_1/.env && cp dist.env src/app_2/.env`
+   - ❗ A postgres database must be made available, and details filled in
+2. Install dependencies `poetry install --all-extras`
+3. Run specific app manually:
+   - App_1: `cd src/app_1 && python manage.py runserver`
+   - App_2: `cd src/app_2 && python manage.py runserver`
+
+### Docker (Recommended)
+1. Copy ENV file `cp dist.env .env`
+   - You do not need to make any changes to this file.
+2. Copy compose file `cp local.docker-compose.yml docker-compose.yml`
+3. Run it: `docker-compose up`
+   - App_1 will be made available on `localhost:8080`
+     - Admin path: `localhost:8080/admin`
+     - API path: `localhost:8080/api`
+   - App_2 will be made available on `localhost:8081`
+     - Admin path: `localhost:8081/admin`
+     - API path: `localhost:8081/api`
+
 ### Production
-TODO: Write once determined
-
-## 🧑‍🔬 Testing
-TODO: Write once determined
-
-## 🧰 Resources
-TODO: Write once determined
+This requires traefik with docker-detection enabled and LetsEncrypt activated
+1. Copy over env file: `cp dist.env .env`
+   - ❗ Details must be filled in
+2. Copy compose file `cp prod.docker-compose.yml docker-compose.yml` 
+3. Run `docker-compose up -d` and visit the configured domain addresses
