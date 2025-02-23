@@ -1,6 +1,5 @@
-# 🚀 Technical Assignment - Adapta
-This repository contains two separate solutions for a technical assignment, with additional resources for convinience.
-
+# 🚀 Technical Assignment - Adapta - Django
+This branch provides a Django implementation as required.
 
 ## 📋 Preface
 The two solutions mentioned are as follows:
