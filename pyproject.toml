@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "adapta"
 version = "0.1.0"
-description = "Technical Assignment - Adapta"
+description = "TA Adapta - Solution 2 - FastAPI"
 authors = ["Ada <github@adapdr.me>"]
 readme = "README.md"
 package-mode = false
