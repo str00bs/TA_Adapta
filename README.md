@@ -15,9 +15,11 @@ It should also be mentioned, that it has *significantly* more throughput (higher
    - See branch: [feat/django](https://github.com/str00bs/TA_Adapta/tree/feat/django)
    - See URL(s):
       - UserApp - [Admin page](https://adapta1a.cloud.adapdr.me/admin)
-      - UserApp - [API Root](https://adapta1a.cloud.adapdr.me/api)
+      - UserApp - [API](https://adapta1a.cloud.adapdr.me/api/)
+      - UserApp - [API Root](https://adapta1a.cloud.adapdr.me/)
       - MessagesApp - [Admin page](https://adapta1b.cloud.adapdr.me/admin)
-      - MessagesApp - [API Root](https://adapta1b.cloud.adapdr.me/api)
+      - MessagesApp - [API](https://adapta1b.cloud.adapdr.me/api/)
+      - MessagesApp - [API Root](https://adapta1b.cloud.adapdr.me/)
 2. Proposed implementation: solving the assignment using alternative technologies (FastAPI)
    - See branch: [feat/fastapi](https://github.com/str00bs/TA_Adapta/tree/feat/fastapi)
    - See URL(s):
