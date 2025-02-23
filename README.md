@@ -11,24 +11,24 @@ It should also be mentioned, that it has *significantly* more throughput (higher
 
 
 ## 📋 Solutions
-1. Expected solution: solving the assignment using the requested technologies (Django)
+1. Requested implementation: solving the assignment using the requested technologies (Django)
    - See branch: [feat/django](https://github.com/str00bs/TA_Adapta/tree/feat/django)
    - See URL(s):
-      - Service page: [service/](https://adapta.cloud.adapdr.me/)
-      - Docs (Swagger): [service/docs](https://adapta.cloud.adapdr.me/)
-      - Alt-Docs: (ReDoc): [service/redoc](https://adapta.cloud.adapdr.me/)
-      - OpenAPI Specification: [openapi.json](https://adapta.cloud.adapdr.me/openapi.json)
-2. Proposed solution: solving the assignment using alternative technologies (FastAPI)
+      - UserApp - [Admin page](https://adapta1a.cloud.adapdr.me/admin)
+      - UserApp - [API Root](https://adapta1a.cloud.adapdr.me/api)
+      - MessagesApp - [Admin page](https://adapta1b.cloud.adapdr.me/admin)
+      - MessagesApp - [API Root](https://adapta1b.cloud.adapdr.me/api)
+2. Proposed implementation: solving the assignment using alternative technologies (FastAPI)
    - See branch: [feat/fastapi](https://github.com/str00bs/TA_Adapta/tree/feat/fastapi)
    - See URL(s):
       - Service page: [service/](https://adapta2.cloud.adapdr.me/)
-      - Docs (Swagger): [service/docs](https://adapta2.cloud.adapdr.me/)
-      - Alt-Docs: (ReDoc): [service/redoc](https://adapta2.cloud.adapdr.me/)
-      - OpenAPI Specification: [openapi.json](https://NAME.cloud.adapdr.me/openapi.json)
-3. Minified solution: a minified version of 2, showing how it can be compressed/extended to fit a variety of use-cases.
+      - Docs (Swagger): [service/docs](https://adapta2.cloud.adapdr.me/docs)
+      - Alt-Docs: (ReDoc): [service/redoc](https://adapta2.cloud.adapdr.me/redoc)
+      - OpenAPI Specification: [openapi.json](https://adapta2.cloud.adapdr.me/openapi.json)
+3. Minified implementation: a minified version of 2, showing how it can be compressed/extended to fit a variety of use-cases.
    - See branch: [feat/fastapi-micro](https://github.com/str00bs/TA_Adapta/tree/feat/fastapi-micro)
    - See URL(s):
       - Service page: [service/](https://adapta3.cloud.adapdr.me/)
-      - Docs (Swagger): [service/docs](https://adapta3.cloud.adapdr.me/)
-      - Alt-Docs: (ReDoc): [service/redoc](https://adapta3.cloud.adapdr.me/)
+      - Docs (Swagger): [service/docs](https://adapta3.cloud.adapdr.me/docs)
+      - Alt-Docs: (ReDoc): [service/redoc](https://adapta3.cloud.adapdr.me/redoc)
       - OpenAPI Specification: [service/openapi.json](https://adapta3.cloud.adapdr.me/openapi.json)
