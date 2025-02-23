@@ -31,7 +31,7 @@ services:
       - traefik.http.routers.adapta-django-1.entrypoints=https
       - traefik.http.routers.adapta-django-1.rule=Host(`${DOMAIN_1}`)
       # Services
-      - traefik.http.services.adapta-django-1.loadbalancer.server.port=8000
+      - traefik.http.services.adapta-django-1.loadbalancer.server.port=80
 
   app-2:
     build:
@@ -40,6 +40,7 @@ services:
     container_name: service-adapta-django-2
     restart: unless-stopped
     depends_on:
+      - app-1
       - database
     networks:
       - adapta-net-1
@@ -52,7 +53,7 @@ services:
       - traefik.http.routers.adapta-django-2.entrypoints=https
       - traefik.http.routers.adapta-django-2.rule=Host(`${DOMAIN_2}`)
       # Services
-      - traefik.http.services.adapta-django-2.loadbalancer.server.port=8000
+      - traefik.http.services.adapta-django-2.loadbalancer.server.port=80
 
 networks:
   adapta-net-1:

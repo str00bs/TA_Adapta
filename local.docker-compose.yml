@@ -23,7 +23,7 @@ services:
     networks:
       - adapta-net-1
     ports: 
-      - "8080:8000"
+      - "8080:80"
 
   app-2:
     build:
@@ -32,11 +32,12 @@ services:
     container_name: service-adapta-django-2
     restart: unless-stopped
     depends_on:
+      - app-1
       - database
     networks:
       - adapta-net-1
     ports: 
-      - "8081:8000"
+      - "8081:80"
 
 networks:
   adapta-net-1:

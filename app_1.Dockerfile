@@ -23,3 +23,5 @@ ENV PYTHONPATH "${PYTHONPATH}:/app"
 
 # ? Run app
 ENTRYPOINT [ "sh", "entrypoint.sh" ]
+
+EXPOSE 80
